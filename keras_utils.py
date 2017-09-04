@@ -19,12 +19,6 @@ from keras.layers.core import Lambda
 
 
 #%%
-print('##################################################')
-print('##################################################')
-print(__name__)
-print('##################################################')
-print('##################################################')
-
 def get_available_gpus():
     """
     The function does what its name says. Simple as that.
