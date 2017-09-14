@@ -14,7 +14,7 @@ If you wish to have GPU support and have installed CUDA you can use `pip install
 
 ### 3. Install AutoSleepScorer
 Clone and install this repository via pip:
-`pip install git+https://github.com/skjerns/AutoSleepScorer
+`pip install git+https://github.com/skjerns/AutoSleepScorer`
 
 ## Quickstart
 
