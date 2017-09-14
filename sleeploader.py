@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import re
-import csv
 import mne
-import pickle as cPickle
 import numpy as np
-import numpy.random as random
-from tools import shuffle, butter_bandpass_filter
+from tools import butter_bandpass_filter
 from multiprocessing import Pool
-from tqdm import trange
 from copy import deepcopy
 
 def natural_key(string_):
@@ -19,15 +15,13 @@ def natural_key(string_):
 class SleepData(object):
         
     def __init__(self, file, preload = True, use_mp = True, 
-                 channels={'EEG': False, 'EMG': False, 'EOG': False},
-                 references={'RefEEG': False, 'RefEMG': False, 'RefEOG': False},
-                 epoch_len = 3000):
+                 channels=None,  references=None,  epoch_len = 3000):
         """
         :param file: a file string pointing to a sleep EEG header
         :param preload: load eeg while instantiating
         :param use_mp: use multiprocessing. Will instantiate 3 workers usable by all SleepData instances.
         """
-        if not os.path.isfile(file): raise FileNotFoundError( 'Director {} not found'.format(file))
+        if not os.path.isfile(file): raise FileNotFoundError( 'File {} not found'.format(file))
         if use_mp and not hasattr(SleepData,'pool'): SleepData.pool = Pool(3)
         self.header = None
         self.data = None
@@ -36,8 +30,8 @@ class SleepData(object):
         self.file = file
         self.loaded = False
         self.printed_channels = False
-        self.channels   = channels
-        self.references = references
+        self.channels   = {'EEG': False, 'EMG': False, 'EOG': False} if channels is None else channels
+        self.references = {'RefEEG': False, 'RefEMG': False, 'RefEOG': False} if references is None else references
         self.epoch_len = epoch_len
         
         if preload == True:
@@ -255,7 +249,7 @@ class SleepData(object):
         
         # resampling
         if not np.isclose(self.sfreq, 100): 
-            print('resampling')
+            print('resampling from {} Hz to {} Hz'.format(self.sfreq, 100))
             if self.use_mp and hasattr(SleepData,'pool') and type(SleepData.pool) is Pool:
                 res_eeg = SleepData.pool.apply_async(mne.io.RawArray(np.stack([self.eeg]), mne.create_info(1, self.sfreq, 'eeg'), verbose=0).resample, args = (100.,))
                 res_emg = SleepData.pool.apply_async(mne.io.RawArray(np.stack([self.emg]), mne.create_info(1, self.sfreq, 'eeg'), verbose=0).resample, args = (100.,))
@@ -277,15 +271,10 @@ class SleepData(object):
                 
     def load(self, file = None):
         if file is None: file = self.file
-        print(1)
         self.load_eeg_header(file, verbose='WARNING')
-        print(2)
         self.pick_channels()
-        print(3)
         self.load_data()
-        print(4)
         self.preprocess()
-        print(5)
         return self.get_data()
 
     def get_data(self, epoch_len = 3000, start = None, end = None):
