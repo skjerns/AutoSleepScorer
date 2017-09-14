@@ -13,6 +13,7 @@ if __name__ == '__main__':
 import sleeploader
 import numpy as np
 import argparse
+import tools
 
 
     
@@ -72,19 +73,8 @@ if __name__ == '__main__':
     scorer.run()
 #
 ##    
-##    
-##    
-#    true = np.genfromtxt('C:/sleep/cshs100/cshhs_test_run1_100_ccshs-trec-1800191-profusion.xml_eegonset_0_to_10000_min.txt')[:,0]
-#    true[true==4]=3
-#    true[true==5]=4
-#    print(np.mean(true==np.argmax(preds,1)))
-#    scorer.predict(sleep[:,:2800,:])
-#    preds1 = scorer.get_probas()[:len(true)]
-#    scorer.predict(sleep[:,100:2900,:])
-#    preds2 = scorer.get_probas()[:len(true)]
-#    scorer.predict(sleep[:,200:,:])
-#    preds3 = scorer.get_probas()[:len(true)]
-#    
-#    preds = np.argmax((preds1+preds2+preds3)/3,1)
-#    print(np.mean(preds==true))
-#
+def example():
+    print('A sample file from the EDFx database will be loaded...')
+    tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
+    scorer = sleepscorer.AutoSleepScorer([os.getcwd() + 'sample-psg.edf'], hypnograms=True)
+    scorer.run()

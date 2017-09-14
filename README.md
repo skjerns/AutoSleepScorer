@@ -20,6 +20,6 @@ Clone and install this repository via pip:
 
 Open a python console.
 ```Python
-import AutoSleepScorer
-xxx
+import autosleepscorer
+autosleepscorer.example()
 ```
