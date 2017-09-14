@@ -22,8 +22,8 @@ if __name__ == '__main__':
     parser.add_argument('psg', action='store', help='Path to eeg header or a directory containing several eeg files', type=str)
     parser.add_argument('-ext','--psg_file_extension', action='store', help='File extension for directory usage', default='*', type=str)
 
-    parser.add_argument("-cnn", '--cnn_weights', help="path to cnn weigths",  action="store", default='./weights/cnn.hdf5', type=str)
-    parser.add_argument("-rnn", '--rnn_weights', help="path to rnn weigths",  action="store", default='./weights/rnn.hdf5', type=str)
+    parser.add_argument("-cnn", '--cnn_weights', help="path to cnn weigths",  action="store", default=None, type=str)
+    parser.add_argument("-rnn", '--rnn_weights', help="path to rnn weigths",  action="store", default=None, type=str)
 
     parser.add_argument("-eeg", help="channel to use as EEG",  action="store", default=False, type=str)
     parser.add_argument("-emg", help="channel to use as EMG",  action="store", default=False, type=str)
@@ -60,10 +60,10 @@ if __name__ == '__main__':
     else:
         raise FileNotFoundError('Path {} is not found or not a directory'.format(path))
         
-    if not os.path.isfile(cnn):
+    if cnn is not None and not os.path.isfile(cnn) :
         raise FileNotFoundError('CNN weights not found at {}'.format(cnn))
         
-    if not os.path.isfile(rnn):
+    if  rnn is not None and not os.path.isfile(rnn):
         raise FileNotFoundError('RNN weights not found at {}'.format(rnn))
     
     #    cnn = 'C:/Users/Simon/dropbox/Uni/Masterthesis/AutoSleepScorerDev/weights/1207LSTM moreL2cnn3adam_filter_morel2_4_0.861-0.774'

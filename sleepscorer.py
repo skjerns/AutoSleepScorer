@@ -15,11 +15,22 @@ import matplotlib.pyplot as plt
 
 class AutoSleepScorer(object):
     
-    def __init__(self, files, cnn, rnn, channels=None, references=None, mapping=None, hypnograms=True):
+    def __init__(self, files, cnn=None, rnn=None, channels=None, references=None, mapping=None, hypnograms=True):
+        
+        if cnn is None:
+            print(1)
+            self.cnn = './weights/cnn.hdf5'
+            if not os.path.isfile('./weights/cnn.hdf5'):
+                print(2)
+
+                self.download_weights(cnn=True,rnn=False)
+        if rnn is None:
+            self.rnn = './weights/rnn.hdf5'
+            if not os.path.isfile('./weights/rnn.hdf5'):
+                self.download_weights(cnn=False,rnn=True)          
+            
         self.files = files
         self.q = []
-        self.cnn = cnn
-        self.rnn = rnn
         self.channels = channels
         self.references = references
         self.hypnograms = hypnograms
@@ -33,6 +44,25 @@ class AutoSleepScorer(object):
             self.files.append(eeg_file)
         else:
             print('WARNING: Did not add, {} does not exist'.format(eeg_file))
+            
+    def download_weights(self, cnn = True, rnn = True):
+        if cnn:
+            if os.path.isfile(self.cnn):
+                r = input('CNN Weights file already exists. Redownload? Y/N\n')
+            else:
+                r = input('CNN weights not found. Download weights (377 MB)?  Y/N\n')
+            if r.upper() == 'Y':
+                tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
+            
+        if rnn:
+            if os.path.isfile(self.rnn):
+                r = input('RNN Weights file already exists. Redownload? Y/N\n')
+            else:
+                r = input('RNN Weights not found. Download weights (14 MB)? Y/N\n')
+            if r.upper() == 'Y':
+                tools.download('https://www.dropbox.com/s/bx5ulz7ps3pyjbk/rnn.hdf5?dl=1', './weights/rnn.hdf5')
+                
+        
             
     def run(self):
         

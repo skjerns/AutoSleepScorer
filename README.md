@@ -1,7 +1,26 @@
 # AutoSleepScorer
 An attempt to create a robust sleep scorer.
 
-## This repository is yet a file dump.
-Files will be cleaned up and comments, readme and more will be added after I return from my holidays in September 2017.
+## Installation
 
-If you read this message after September 2017 I'll buy you a drink.
+### 1. Install Anaconda
+Download and install Anaconda with Python 3.6 64 bit from 
+https://repo.continuum.io/archive/Anaconda3-4.4.0-Windows-x86_64.exe
+
+If you already have a working Python 3.x environment you can skip this step.
+
+### 2. Install Tensorflow
+Open a command line and install tensorflow via `pip install tensorflow`
+If you wish to have GPU support and have installed CUDA you can use `pip install tensorflow-gpu`
+
+### 3. Install AutoSleepScorer
+Clone and install this repository via pip:
+`pip install git+https://github.com/skjerns/AutoSleepScorer
+
+## Quickstart
+
+Open a python console.
+```Python
+import AutoSleepScorer
+xxx
+```

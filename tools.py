@@ -25,8 +25,11 @@ from sklearn.utils import shuffle
 from sklearn.metrics import f1_score, accuracy_score
 from copy import deepcopy
 import json
-import os
+import os,sys
 import re
+
+from urllib.request import urlretrieve
+
 
 use_sfreq=100.0
 
@@ -439,7 +442,7 @@ def append_json(json_filename, dic):
 
 
 def plot_confusion_matrix(fname, conf_mat, target_names, 
-                          title='', cmap='Blues', perc=True,figsize=(6,5),cbar=True):
+                          title='', cmap='Blues', perc=True,figsize=[6,5],cbar=True):
     """Plot Confusion Matrix."""
     figsize = deepcopy(figsize)
     if cbar == False:
@@ -576,12 +579,10 @@ def plot_hypnogram(stages, labels=None, title='', ax1=None, **kwargs):
     ax1.plot(x,y, **kwargs)
     plt.yticks([0,-1,-2,-3,-4,-5], ['W','REM', 'S1', 'S2', 'SWS' ])
     plt.xticks(np.arange(0,x[-1],3600))
-    plt.xlabel('Time after lights-off')
+    plt.xlabel('Time after recording start')
     plt.ylabel('Sleep Stage')
     plt.title(title)
     plt.tight_layout()
-
-
 
 def memory():
     from wmi import WMI
@@ -589,7 +590,19 @@ def memory():
     result = w.query("SELECT WorkingSet FROM Win32_PerfRawData_PerfProc_Process WHERE IDProcess=%d" % os.getpid())
     return int(result[0].WorkingSet)/1024**2
     
+def reporthook(blocknum, blocksize, totalsize):
+    readsofar = blocknum * blocksize
+    if totalsize > 0:
+        percent = readsofar * 1e2 / totalsize
+        s = "\r{}% {:.1f}/{:.1f} MB".format(int(percent), readsofar/1024**2, totalsize/1024**2)
+        sys.stderr.write(s)
+        if readsofar >= totalsize: # near the end
+            sys.stderr.write("\n")
+    else: # total size is unknown
+        sys.stderr.write("read %d\n" % (readsofar,))
 
+def download(url, file):
+    urlretrieve(url, file, reporthook)
 
 def one_hot(hypno, n_categories):
     enc = OneHotEncoder(n_values=n_categories)
@@ -605,7 +618,6 @@ def shuffle_lists(*args,**options):
     
 
 def epoch_voting(Y, chunk_size):
-    
     
     Y_new = Y.copy()
     
