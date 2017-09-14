@@ -7,6 +7,6 @@ setup(name='AutoSleepScorer',
       author='skjerns',
       author_email='sikern@uos.de',
       license='See Github',
-      packages=['AutoSleepScorer'],
+      packages=['sleepscorer'],
       install_requires=['keras','mne', 'tqdm', 'sklearn', 'matplotlib'],
       zip_safe=False)

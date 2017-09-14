@@ -19,7 +19,14 @@ Clone and install this repository via pip:
 ## Quickstart
 
 Open a python console.
+
+To classify a sample EEG file
+
 ```Python
-import autosleepscorer
-autosleepscorer.example()
+# download sample EEG file
+tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
+file = os.path.join(os.getcwd(), 'sample-psg.edf')
+# create and run scorer
+scorer = sleepscorer.AutoSleepScorer([file], hypnograms=True)
+scorer.run()
 ```
