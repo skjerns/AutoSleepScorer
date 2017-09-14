@@ -4,8 +4,7 @@ An attempt to create a robust sleep scorer.
 ## Installation
 
 ### 1. Install Anaconda
-Download and install Anaconda with Python 3.6 64 bit from 
-https://repo.continuum.io/archive/Anaconda3-4.4.0-Windows-x86_64.exe
+Download and install Anaconda with Python 3.6 64 bit from https://www.anaconda.com/download/#download
 
 If you already have a working Python 3.x environment you can skip this step.
 
