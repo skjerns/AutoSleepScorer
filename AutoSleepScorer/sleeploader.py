@@ -3,7 +3,7 @@ import os
 import re
 import mne
 import numpy as np
-from tools import butter_bandpass_filter
+from .tools import butter_bandpass_filter
 from multiprocessing import Pool
 from copy import deepcopy
 
@@ -15,7 +15,7 @@ def natural_key(string_):
 class SleepData(object):
         
     def __init__(self, file, preload = True, use_mp = True, 
-                 channels=None,  references=None,  epoch_len = 3000):
+                 channels=None,  references=None,  epoch_len = 3000, start=None, stop=None ):
         """
         :param file: a file string pointing to a sleep EEG header
         :param preload: load eeg while instantiating
@@ -24,7 +24,9 @@ class SleepData(object):
         if not os.path.isfile(file): raise FileNotFoundError( 'File {} not found'.format(file))
         if use_mp and not hasattr(SleepData,'pool'): SleepData.pool = Pool(3)
         self.header = None
-        self.data = None
+        self.epoch_len = epoch_len
+        self.start = start
+        self.stop = stop
         self.use_mp = use_mp
         self.available_channels = []
         self.file = file
@@ -214,7 +216,7 @@ class SleepData(object):
             if self.channels[ch].upper() not in channels:
                 raise ValueError('ERROR: Channel {} for {} not found in {}\navailable channels: {}'.format(self.channels[ch], ch, filename, channels))
             else:
-                picks.append(channels.index(self.channels[ch]))
+                picks.append(channels.index(self.channels[ch].upper()))
                 labels.append(ch)
         for ch in self.references:
             if not self.references[ch]:continue
@@ -275,23 +277,48 @@ class SleepData(object):
         self.pick_channels()
         self.load_data()
         self.preprocess()
+        self.loaded = True
         return self.get_data()
 
-    def get_data(self, epoch_len = 3000, start = None, end = None):
+    def get_data(self, epoch_len = None, start = None, stop = None):
+        """
+        :param epoch_len: Select length of epoch in samples with sampling frequency 100. Default: 3000
+        :param start: select starting point of selection in samples with sfreq=100
+        :param stop: select stopping point of selection in samples with sfreq=100
+        """        
+        if start: self.start = start
+        if stop: self.stop = stop
+        if epoch_len: self.epoch_len = epoch_len
+        if not self.loaded:
+            self.load()
         signal = np.vstack([self.eeg, self.emg, self.eog]).swapaxes(0,1)
-        signal = signal[start:end]
-        signal = signal[:len(signal) - len(signal) % epoch_len]
-        signal = signal.reshape([-1, epoch_len, 3])
+        signal = signal[self.start:self.stop]
+        signal = signal[:len(signal) - len(signal) % self.epoch_len]
+        signal = signal.reshape([-1, self.epoch_len, 3])
         signal = signal-np.mean(signal)
         signal = signal/np.std(signal)
         return signal.astype(np.float32)
         
-    
+    def info(self):
+        memsize = '{:.1f}'.format((self.eeg.nbytes + self.eog.nbytes + self.emg.nbytes)/1024**2) if self.loaded else 'Not loaded'
+        print('File:      {} ({:.1f} MB)'.format(self.file,os.path.getsize(self.file)/1024**2))
+        print('Memory:    {} MB'.format(memsize))
+        print('Epoch len: {} samples'.format(self.epoch_len))
+        print('Selection: {} to {}'.format(self.start, self.stop))
+        print('Channel Information')
+        print('Available channels: {}'.format(self.available_channels))
+        print('Selected channels:  {}'.format(self.channels))
+        print('Selected references: {}'.format(self.references))
+
+        
     def __call__(self):
         return self.get_data()
     
     def __len__(self):
         return len(self.eeg)
+    
+    def __getitem__(self, start, stop, step):
+        return self.get_data(start=start, stop=stop)
 
     
 #%%

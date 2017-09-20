@@ -7,10 +7,10 @@ Created on Wed Sep  6 12:06:04 2017
 import os
 import keras
 import numpy as np
-import tools
 import keras.backend as K
-import sleeploader
 import matplotlib.pyplot as plt
+from . import tools
+from . import sleeploader
 
 
 class Scorer(object):
@@ -18,10 +18,8 @@ class Scorer(object):
     def __init__(self, files, cnn=None, rnn=None, channels=None, references=None, mapping=None, hypnograms=True):
         
         if cnn is None:
-            print(1)
             self.cnn = './weights/cnn.hdf5'
             if not os.path.isfile('./weights/cnn.hdf5'):
-                print(2)
 
                 self.download_weights(cnn=True,rnn=False)
         if rnn is None:
@@ -65,25 +63,33 @@ class Scorer(object):
         
             
     def run(self):
-        
         clf = Classifier()
-        self._print('Loading CNN model')
         clf.load_cnn_model(self.cnn)
-        self._print('Loading RNN model')
         clf.load_rnn_model(self.rnn)
         
         self.q = [x for x in self.files]
         self._print('Starting predictions of {} file(s)'.format(len(self.q)))
         while len(self.q) != 0:
             file = self.q.pop(0)
-            self._print('Loading {}'.format(os.path.basename(file)))
-            sleep = sleeploader.SleepData(file)()
+            if type(file)==str:
+                self._print('Loading {}'.format(os.path.basename(file)))
+                sleep = sleeploader.SleepData(file)()
+                filename = file
+            elif type(file)==sleeploader.SleepData:
+                self._print('Loading {}'.format(os.path.basename(file.file)))
+                sleep = file()
+                filename = file.file
+            else:
+                raise TypeError('Type is {}, must be string or SleepData'.format(type(file)))
+                
             self._print('Predicting...')
             preds = clf.predict(sleep, classes=True)
-            np.savetxt(file + '.csv', preds, fmt='%d')
+            np.savetxt(filename + '.csv', preds, fmt='%d')
             if self.hypnograms: 
-                tools.plot_hypnogram(preds, title = os.path.basename(file))
-                plt.savefig(file + '.hyp.png')
+                tools.plot_hypnogram(preds, title ='Predictions for {}'.format( os.path.basename(filename)))
+                plt.savefig(filename + '.hyp.png')
+                
+        
 
             
             
@@ -93,16 +99,23 @@ class Scorer(object):
 class Classifier(object):
 
     def __init__(self, cnn_weights=False, rnn_weights=False, 
-                wake = 0, s1 = 1, s2 = 2, sws = 3, rem = 4):
+                wake = 0, s1 = 1, s2 = 2, sws = 3, rem = 4, verbose=1):
         """
         :param directory: a directory string
         """
         self.predictions = None
         self.mapping = {0:wake, 1:s1, 2:s2, 3:sws, 4:rem}
+        self.verbose = verbose
         
-#        if ( cnn_weights and not os.path.isdir(cnn_weights)): raise FileNotFoundError( 'CNN weights {} not found'.format(cnn_weights))
-#        if (not rnn_weights and not os.path.isdir(cnn_weights)): raise FileNotFoundError( 'CNN weights {} not found'.format(cnn_weights))
-#        if cnn_weights: self.load_cnn_model(cnn_weights)
+        
+    def _print(self, string):
+        """
+        Convenience function for printing. 
+        Allows easy replacement of printing function or redirecting of streams.
+        
+        :param string: string to print
+        """
+        print(string)        
         
     def _get_activations(self, data, model, layers, batch_size=256):
 
@@ -130,10 +143,12 @@ class Classifier(object):
 
 
     def load_cnn_model(self, cnn_weights):
+        if self.verbose == 1: self._print('Loading CNN model')
         self.cnn = keras.models.load_model(cnn_weights)
     
     
     def load_rnn_model(self, rnn_weights):
+        if self.verbose == 1: self._print('Loading RNN model')
         self.rnn = keras.models.load_model(rnn_weights)
         
         

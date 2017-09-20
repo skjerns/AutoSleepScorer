@@ -20,13 +20,30 @@ Clone and install this repository via pip:
 
 Open a python console.
 
-To classify a sample EEG file
+Minimal setup for quick classification
 
 ```Python
-# download sample EEG file
-tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
-file = os.path.join(os.getcwd(), 'sample-psg.edf')
-# create and run scorer
-scorer = sleepscorer.AutoSleepScorer([file], hypnograms=True)
+from AutoSleepScorer import Scorer
+scorer = sleepscorer.Scorer([eeg_filename], hypnograms=True)
 scorer.run()
+```
+
+Extended example using a sample file from the EDFx database
+
+```Python
+from AutoSleepScorer import Scorer, SleepData
+# download sample EEG file from the EDFx database
+tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
+# download corresponding hypnogram for comparrison
+tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.hypnogram.csv') 
+```
+Instead of a filename we can also set advanced options using a `SleepData` object
+```Python
+# create and run scorer using a filename as input
+file = sleeploader.SleepData('sample-psg.edf', start = 2880000, stop = 5400000, 
+							  channels={'EEG':'EEG Fpz-Cz', 'EMG':'EMG submental', 
+                              			'EOG':'EOG horizontal'}, preload=False)
+scorer = sleepscorer.Scorer([file], hypnograms=True)
+scorer.run()
+tools.show_sample_hypnogram('sample-psg.hypnogram.csv', start=960, stop=1800)  
 ```

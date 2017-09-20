@@ -28,7 +28,7 @@ import json
 import os,sys
 import re
 
-from urllib.request import urlretrieve
+from urllib.request import urlretrieve, urlopen
 
 
 use_sfreq=100.0
@@ -601,8 +601,11 @@ def reporthook(blocknum, blocksize, totalsize):
     else: # total size is unknown
         sys.stderr.write("read %d\n" % (readsofar,))
 
-def download(url, file):
-    urlretrieve(url, file, reporthook)
+def download(url, file = None):
+    if file:
+        urlretrieve(url, file, reporthook)
+    else:
+        return urlopen(url).read().decode("utf-8")
 
 def one_hot(hypno, n_categories):
     enc = OneHotEncoder(n_values=n_categories)
@@ -692,7 +695,12 @@ def print_string(results_dict):
 
 
 
-
+def show_sample_hypnogram(filename, start=None,stop=None):
+    hypno = np.loadtxt(filename)
+    hypno = hypno[start:stop]
+    hypno[hypno==4]=3
+    hypno[hypno==5]=4
+    plot_hypnogram(hypno,title = 'True Sleep Stages')
 
 
 

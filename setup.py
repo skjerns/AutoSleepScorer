@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='AutoSleepScorer',
-      version='0.21',
+      version='0.22',
       description='An Automatic Sleep Stage Classification Package',
       url='http://github.com/skjerns/AutoSleepScorer',
       author='skjerns',

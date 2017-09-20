@@ -8,12 +8,12 @@ Main script for the AutoSleepScorer
 """
 import os
 
-if __name__ == '__main__':
-    import sleepscorer
-import sleeploader
 import numpy as np
 import argparse
-import tools
+from . import sleeploader
+from . import tools
+if __name__ == '__main__':
+    from . import sleepscorer
 
 
 #    
@@ -72,9 +72,22 @@ import tools
 #    scorer = sleepscorer.AutoSleepScorer(files, cnn, rnn, hypnograms=True)
 #    scorer.run()
 #
-##    
-#def example():
-#    print('A sample file from the EDFx database will be loaded...')
-#    tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
-#    scorer = sleepscorer.AutoSleepScorer([os.os.getcwd() + 'sample-psg.edf'], hypnograms=True)
-#    scorer.run()
+    
+def run_example():
+    if not os.path.isfile('sample-psg.edf'):
+        print('A sample file from the EDFx database will be loaded...')
+        tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
+        tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.hypnogram.csv') 
+        
+    file = 'sample-psg.edf'
+    scorer = sleepscorer.Scorer([file], hypnograms=True)
+    scorer.run()
+    tools.show_sample_hypnogram('sample-psg.hypnogram.csv')  
+    
+    
+    sleepdata = sleeploader.SleepData('sample-psg.edf', start = 2880000, stop = 5400000, channels={'EEG':'EEG Fpz-Cz', 'EMG':'EMG submental', 'EOG':'EOG horizontal'}, preload=False)
+    scorer = sleepscorer.Scorer([sleepdata], hypnograms=True)
+    scorer.run()
+    tools.show_sample_hypnogram('sample-psg.hypnogram.csv', start=960, stop=1800)  
+    
+#run_example()
