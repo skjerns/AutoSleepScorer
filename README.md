@@ -24,6 +24,7 @@ Clone and install this repository via pip:
 Open a python console.
 
 **Minimal example**
+
 For quick classification
 
 ```Python
@@ -34,7 +35,8 @@ scorer.run()
 ```
 
 **Extended example**
-First download a sample file from the EDFx database
+
+First we download a sample file from the EDFx database
 
 ```Python
 from sleepscorer import tools
@@ -43,6 +45,7 @@ tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 
 # download corresponding hypnogram for comparrison of classification
 tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.hypnogram.csv') 
 ```
+Now we can start the Scorer using a list of EEG files.
 Instead of an EEG-filename we can also set advanced options using a `SleepData` object
 ```Python
 # create a SleepData object 
