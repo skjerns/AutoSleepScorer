@@ -5,7 +5,7 @@ Created on Wed Sep  6 12:06:04 2017
 @author: Simon
 """
 import os
-import tqdm
+from tqdm import tqdm
 import keras
 import numpy as np
 import keras.backend as K
