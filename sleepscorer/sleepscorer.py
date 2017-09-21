@@ -5,6 +5,7 @@ Created on Wed Sep  6 12:06:04 2017
 @author: Simon
 """
 import os
+import tqdm
 import keras
 import numpy as np
 import keras.backend as K
@@ -136,7 +137,7 @@ class Classifier(object):
         functor = K.function([inp] + [K.learning_phase()], outputs ) # evaluation function
         
         activations = [[] for x in layers]
-        for i in range(int(np.ceil(len(data)/batch_size))):
+        for i in tqdm(range(int(np.ceil(len(data)/batch_size)))):
             batch = np.array(data[i*batch_size:(i+1)*batch_size], dtype=np.float32)
             acts = functor([batch,0])
             for i in range(len(acts)):

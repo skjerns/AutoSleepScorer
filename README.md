@@ -51,7 +51,7 @@ file = SleepData('sample-psg.edf', start = 2880000, stop = 5400000,
 							  channels={'EEG':'EEG Fpz-Cz', 'EMG':'EMG submental', 
                               			'EOG':'EOG horizontal'}, preload=False)
 # Create and run Scorer
-scorer = Scorer([file], hypnograms=True)
+scorer = Scorer([file], hypnograms=True, demo=True)
 scorer.run()
 tools.show_sample_hypnogram('sample-psg.hypnogram.csv', start=960, stop=1800)
 ```
