@@ -50,6 +50,8 @@ class Scorer(object):
             else:
                 r = input('CNN weights not found. Download weights (377 MB)?  Y/N\n')
             if r.upper() == 'Y':
+                try: os.mkdir('./weights')
+                except Exception: pass
                 tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
             
         if rnn:
@@ -58,6 +60,8 @@ class Scorer(object):
             else:
                 r = input('RNN Weights not found. Download weights (14 MB)? Y/N\n')
             if r.upper() == 'Y':
+                try: os.mkdir('./weights')
+                except Exception: pass
                 tools.download('https://www.dropbox.com/s/bx5ulz7ps3pyjbk/rnn.hdf5?dl=1', './weights/rnn.hdf5')
                 
         
