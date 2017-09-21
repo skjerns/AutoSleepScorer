@@ -16,17 +16,17 @@ from . import sleeploader
 
 class Scorer(object):
     
-    def __init__(self, files, cnn=None, rnn=None, channels=None, references=None, mapping=None, hypnograms=True):
+    def __init__(self, files, cnn=None, rnn=None, channels=None, references=None, mapping=None, hypnograms=True, demo=False):
         
         if cnn is None:
             self.cnn = './weights/cnn.hdf5'
             if not os.path.isfile('./weights/cnn.hdf5'):
 
-                self.download_weights(cnn=True,rnn=False)
+                self.download_weights(cnn=True,rnn=False, ask=not demo)
         if rnn is None:
             self.rnn = './weights/rnn.hdf5'
             if not os.path.isfile('./weights/rnn.hdf5'):
-                self.download_weights(cnn=False,rnn=True)          
+                self.download_weights(cnn=False,rnn=True, ask=not demo)          
             
         self.files = files
         self.q = []
@@ -44,11 +44,12 @@ class Scorer(object):
         else:
             print('WARNING: Did not add, {} does not exist'.format(eeg_file))
             
-    def download_weights(self, cnn = True, rnn = True):
+    def download_weights(self, cnn = True, rnn = True, ask=False):
+        if not ask: r='Y'
         if cnn:
-            if os.path.isfile(self.cnn):
+            if ask and os.path.isfile(self.cnn):
                 r = input('CNN Weights file already exists. Redownload? Y/N\n')
-            else:
+            elif ask:
                 r = input('CNN weights not found. Download weights (377 MB)?  Y/N\n')
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
@@ -56,9 +57,9 @@ class Scorer(object):
                 tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
             
         if rnn:
-            if os.path.isfile(self.rnn):
+            if ask and os.path.isfile(self.rnn):
                 r = input('RNN Weights file already exists. Redownload? Y/N\n')
-            else:
+            elif ask:
                 r = input('RNN Weights not found. Download weights (14 MB)? Y/N\n')
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
@@ -90,9 +91,11 @@ class Scorer(object):
             self._print('Predicting...')
             preds = clf.predict(sleep, classes=True)
             np.savetxt(filename + '.csv', preds, fmt='%d')
+            print('Predictions saved to {}'.format (filename + '.csv'))
             if self.hypnograms: 
                 tools.plot_hypnogram(preds, title ='Predictions for {}'.format( os.path.basename(filename)))
                 plt.savefig(filename + '.hyp.png')
+                print('Hynograms saved to {}'.format(filename + '.hyp.png'))
                 
         
 
