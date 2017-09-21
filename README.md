@@ -2,6 +2,7 @@
 An attempt to create a robust sleep scorer.
 
 ## Installation
+The AutoSleepScorer is currently running with Python 3 using Keras with Tensorflow and has been tested on Windows.
 
 ### 1. Install Anaconda
 Download and install Anaconda with Python 3.6 64 bit from https://www.anaconda.com/download/#download
@@ -25,7 +26,7 @@ For quick classification
 
 ```Python
 from AutoSleepScorer import Scorer
-scorer = sleepscorer.Scorer([eeg_filename], hypnograms=True)
+scorer = Scorer([eeg_filename], hypnograms=True)
 scorer.run()
 ```
 
