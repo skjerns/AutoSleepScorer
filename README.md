@@ -20,7 +20,8 @@ Clone and install this repository via pip:
 
 Open a python console.
 
-Minimal setup for quick classification
+**Minimal example**
+For quick classification
 
 ```Python
 from AutoSleepScorer import Scorer
@@ -28,7 +29,8 @@ scorer = sleepscorer.Scorer([eeg_filename], hypnograms=True)
 scorer.run()
 ```
 
-Extended example using a sample file from the EDFx database
+**Extended example**
+First download a sample file from the EDFx database
 
 ```Python
 from AutoSleepScorer import Scorer, SleepData
@@ -39,10 +41,11 @@ tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.hypnogram.csv')
 ```
 Instead of a filename we can also set advanced options using a `SleepData` object
 ```Python
-# create and run scorer using a filename as input
+# create a SleepData object 
 file = sleeploader.SleepData('sample-psg.edf', start = 2880000, stop = 5400000, 
 							  channels={'EEG':'EEG Fpz-Cz', 'EMG':'EMG submental', 
                               			'EOG':'EOG horizontal'}, preload=False)
+# Create and run Scorer
 scorer = sleepscorer.Scorer([file], hypnograms=True)
 scorer.run()
 tools.show_sample_hypnogram('sample-psg.hypnogram.csv', start=960, stop=1800)  
