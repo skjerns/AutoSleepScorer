@@ -3,13 +3,13 @@ An attempt to create a robust sleep scorer using Convolutional Neural Networks w
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
-In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true)
+In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
 
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. A link to the accompanying publication will be provided soon.
 
 Data set| Accuracy | F1-score
 ------------ | -------------
-[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% |
+[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% | ?
 [CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
 [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
 [EMSA](https://www.ncbi.nlm.nih.gov/pubmed/28594100) | 87% | 77%
