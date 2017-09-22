@@ -21,7 +21,7 @@ Clone and install this repository via pip:
 
 ## Quickstart
 
-Open a python console.
+Open a python console for instance using Anaconda.
 
 **Minimal example**
 For quick classification
@@ -41,7 +41,7 @@ from sleepscorer import tools
 # download sample EEG file from the EDFx database
 tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
 # download corresponding hypnogram for comparrison of classification
-tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.hypnogram.csv') 
+tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.groundtruth.csv') 
 ```
 Instead of an EEG-filename we can also set advanced options using a `SleepData` object
 ```Python
@@ -53,6 +53,6 @@ file = SleepData('sample-psg.edf', start = 2880000, stop = 5400000,
 # Create and run Scorer
 scorer = Scorer([file], hypnograms=True, demo=True)
 scorer.run()
-tools.show_sample_hypnogram('sample-psg.hypnogram.csv', start=960, stop=1800)
+tools.show_sample_hypnogram('sample-psg.groundtruth.csv', start=960, stop=1800)
 ```
 The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch.
