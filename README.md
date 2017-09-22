@@ -9,10 +9,11 @@ Currently the classifier reaches the state-of-the-art of automatic sleep stage c
 
 Data set| Accuracy | F1-score
 ------------ | -------------
-[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% | ?
+[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% | ??
 [CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
 [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
 [EMSA](https://www.ncbi.nlm.nih.gov/pubmed/28594100) | 87% | 77%
+
 ## Usage
 
 The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used. The aim of the package is to keep the classification process as simple as possible.
