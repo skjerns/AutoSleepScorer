@@ -8,11 +8,11 @@ In this project a Convolutional Neural Network with Long Short-Term Memory is us
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. A link to the accompanying publication will be provided soon.
 
 Data set| Accuracy | F1-score
------------- | -------------
-x | ~80-82% | ??
-x | 89% | 81%
-x | 87% | 80%
-x | 87% | 77%
+------------ | -------------|-------------|
+[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% | ?
+[CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
+[EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
+[EMSA](https://www.ncbi.nlm.nih.gov/pubmed/28594100) | 87% | 77%
 
 ## Usage
 
