@@ -9,10 +9,10 @@ Currently the classifier reaches the state-of-the-art of automatic sleep stage c
 
 Data set| Accuracy | F1-score
 ------------ | -------------
-[Inter Rater Reliability](https://www.ncbi.nlm.nih.gov/pubmed/19250176) | ~80-82% | ??
-[CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
-[EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
-[EMSA](https://www.ncbi.nlm.nih.gov/pubmed/28594100) | 87% | 77%
+x | ~80-82% | ??
+x | 89% | 81%
+x | 87% | 80%
+x | 87% | 77%
 
 ## Usage
 
