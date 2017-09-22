@@ -16,7 +16,7 @@ Data set| Accuracy | F1-score
 
 ## Usage
 
-The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used. The aim of the package is to keep the classification process as simple as possible.
+The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used. All data will be resampled to 100 Hz.
 
 Documentation and command line instructions are coming soon. For now please see [Quickstart](https://github.com/skjerns/AutoSleepScorer#quickstart).
 
