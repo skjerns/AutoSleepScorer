@@ -32,11 +32,13 @@ If you already have a working Python 3.x environment you can skip this step.
 Open a command line and install tensorflow via `pip install tensorflow`
 
 If you wish to have GPU support with a GeForce graphics card and have installed CUDA you can use `pip install tensorflow-gpu`. Running calculations on the GPU accelerates them significantly.
-Installation of CUDA can be a bit tricky and described here: https://www.tensorflow.org/install/
+Installation of CUDA can be a bit tricky and is described here: https://www.tensorflow.org/install/
 
 ### 3. Install AutoSleepScorer
 Clone and install this repository via pip:
 `pip install git+https://github.com/skjerns/AutoSleepScorer`
+
+If you get an error that`git` is not installed, you can install it using the command line `conda install git`
 
 ## Quickstart
 
