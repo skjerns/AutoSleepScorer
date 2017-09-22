@@ -1,9 +1,9 @@
 # AutoSleepScorer
-An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory.
+An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings.
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 
-The sleep stage scoring (also: sleep staging) process is most of the time still performed manually by a trained technician and very tedious and time-consuming. Although many papers have been published which propose automatic sleep stage detection systems none of them could assert themselves as an industry standard. Main reasons for that are the lacking proof of reliability as well as the high costs of the software. Up to this day no open-source implementation or package is available for the researchers or clinicians. In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for features that are learned by the network). The network was trained on several different public and private datasets to ensure a good generalizability.
+In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained on several different public and private datasets to ensure a good generalizability.
 
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. A link to the accompanying publication will be provided soon.
 
@@ -13,7 +13,11 @@ Data set| Accuracy | F1-score
 [CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
 [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
 [EMSA](https://www.ncbi.nlm.nih.gov/pubmed/28594100) | 87% | 77%
+## Usage
 
+The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used. The aim of the package is to keep the classification process as simple as possible.
+
+Documentation and command line instructions are coming soon. For now please see [Quickstart](https://github.com/skjerns/AutoSleepScorer#quickstart).
 
 ## Installation
 The AutoSleepScorer is currently running with Python 3 using Keras with Tensorflow and has been tested on Windows 10. Due to Pythons multi-platform support it should run other OS as well. The easiest way to get started is using Anaconda, a Python package manager.
