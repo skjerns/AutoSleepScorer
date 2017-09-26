@@ -1,6 +1,8 @@
 # AutoSleepScorer
 An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings.
 
+This package is still under development and not published yet.
+
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
 In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
