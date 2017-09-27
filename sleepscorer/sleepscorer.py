@@ -192,6 +192,7 @@ class Classifier(object):
         if classes:
             preds = np.argmax(preds,1)
             preds = [self.mapping[x] for x in preds]
+        self.preds = preds
         return preds        
         
     def get_classes(self):
