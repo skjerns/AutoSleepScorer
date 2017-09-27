@@ -69,9 +69,9 @@ class Scorer(object):
         
             
     def run(self):
-        clf = Classifier()
-        clf.load_cnn_model(self.cnn)
-        clf.load_rnn_model(self.rnn)
+        self.clf = Classifier()
+        self.clf.load_cnn_model(self.cnn)
+        self.clf.load_rnn_model(self.rnn)
         
         self.q = [x for x in self.files]
         self._print('Starting predictions of {} file(s)'.format(len(self.q)))
@@ -89,7 +89,7 @@ class Scorer(object):
                 raise TypeError('Type is {}, must be string or SleepData'.format(type(file)))
                 
             self._print('Predicting...')
-            preds = clf.predict(sleep, classes=True)
+            preds = self.clf.predict(sleep, classes=True)
             np.savetxt(filename + '.csv', preds, fmt='%d')
             print('Predictions saved to {}'.format (filename + '.csv'))
             if self.hypnograms: 
