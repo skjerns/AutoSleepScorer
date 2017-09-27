@@ -348,12 +348,12 @@ def butter_bandpass_filter(data, highpass, fs, order=4):
        return y
    
     
-def show_sample_hypnogram(filename, start=None,stop=None):
+def show_sample_hypnogram(filename, start=None,stop=None, title='True Sleep Stage'):
     hypno = np.loadtxt(filename)
     hypno = hypno[start:stop]
     hypno[hypno==4]=3
     hypno[hypno==5]=4
-    plot_hypnogram(hypno,title = 'True Sleep Stages')
+    plot_hypnogram(hypno,title = title)
 
 
 
