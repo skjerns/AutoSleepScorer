@@ -292,11 +292,13 @@ class SleepData(object):
         if not self.loaded:
             self.load()
         signal = np.vstack([self.eeg, self.emg, self.eog]).swapaxes(0,1)
+        mean = np.mean(signal)
+        std  = np.std(signal)
         signal = signal[self.start:self.stop]
         signal = signal[:len(signal) - len(signal) % self.epoch_len]
         signal = signal.reshape([-1, self.epoch_len, 3])
-        signal = signal-np.mean(signal)
-        signal = signal/np.std(signal)
+        signal = signal-mean
+        signal = signal/std
         return signal.astype(np.float32)
         
     def info(self):

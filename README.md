@@ -9,7 +9,7 @@ Currently the classifier reaches the state-of-the-art of automatic sleep stage c
 
 **Classifier performance (5-fold cross validation)**
 
-Data Set| Accuracy | F1-score
+Data Set| Agreement | F1-score
 ------------ | -------------|-------------
 [CCSHS](https://sleepdata.org/datasets/ccshs) | 89% | 81%
 [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/) | 87% | 80%
