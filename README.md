@@ -1,13 +1,13 @@
 # AutoSleepScorer
-An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings.
+An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings. It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf)
 
-This package is still under development and not published yet.
+This package is still under development and not published yet. 
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
 In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained and evaluated on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
 
-Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. A link to the accompanying publication will be provided soon.
+Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. Further results and details on the architecture are available in my [Thesis](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf)
 
 **Classifier performance (5-fold cross validation)**
 
