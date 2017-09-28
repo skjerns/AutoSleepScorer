@@ -83,6 +83,7 @@ file = SleepData('sample-psg.edf', start = 2880000, stop = 5400000,
 # Create and run Scorer
 scorer = Scorer([file], hypnograms=True, demo=True)
 scorer.run()
+# this will only work if you have matplotlib set-up
 tools.show_sample_hypnogram('sample-psg.groundtruth.csv', start=960, stop=1800)
 ```
 The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch.
