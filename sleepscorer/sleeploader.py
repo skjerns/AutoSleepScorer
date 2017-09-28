@@ -14,11 +14,21 @@ def natural_key(string_):
 
 class SleepData(object):
         
-    def __init__(self, file, preload = True, use_mp = True, 
-                 channels=None,  references=None,  epoch_len = 3000, start=None, stop=None ):
+    def __init__(self, file, preload = True, channels=None,  references=None,  
+                 epoch_len = 3000, start=None, stop=None, use_mp = True ):
         """
+        The SleepData object can load an EEG file or header and perform the necessary preprocessing 
+        and channel selection.
+        
         :param file: a file string pointing to a sleep EEG header
-        :param preload: load eeg while instantiating
+        :param preload: load eeg while instantiating. Else data will be loaded if needed
+        :param channels: A dictionary in the following format, where the value corresponds to
+                         the name of the cannel of that modality {'EEG':'C4', 'EMG':'submental', 'EOG':'LeftEye'}
+        :param references: A dictionary in the following format, where the value corresponds to
+                         the name of the reference for the modality {'RefEEG':'C4', 'RefEMG':False, 'RefEOG':'LeftEye'}
+        :param epoch_len: Epoch length in samples. Not supported yet.
+        :param start: The sample at which to start classification 
+        :param stop: The sample at which to stop classification (length will be trimmed to a multiple of epoch_len)
         :param use_mp: use multiprocessing. Will instantiate 3 workers usable by all SleepData instances.
         """
         if not os.path.isfile(file): raise FileNotFoundError( 'File {} not found'.format(file))

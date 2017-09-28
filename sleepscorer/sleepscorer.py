@@ -16,8 +16,17 @@ from . import sleeploader
 
 class Scorer(object):
     
-    def __init__(self, files, cnn=None, rnn=None, channels=None, references=None, mapping=None, hypnograms=True, demo=False):
+    def __init__(self, files, cnn=None, rnn=None, mapping=None, hypnograms=True, demo=False):
+        """
+        The Scorer object will receive files to classify and return the classifications or save them to disc
         
+        :param files: A list of EEG file paths or a list of SleepData objects. Can be mixture of both.
+        :param cnn: The path to the CNN weights
+        :param rnn: The path to the RNN weights
+        :param mapping: Currently not used. Select output names for the sleep stages
+        :param hypnograms: Save a png with the hypnogram
+        :param demo: Download weights without prompting
+        """
         if cnn is None:
             self.cnn = './weights/cnn.hdf5'
             if not os.path.isfile('./weights/cnn.hdf5'):
@@ -30,8 +39,6 @@ class Scorer(object):
             
         self.files = files
         self.q = []
-        self.channels = channels
-        self.references = references
         self.hypnograms = hypnograms
     
     def _print(self, string):
@@ -106,10 +113,11 @@ class Scorer(object):
             
 class Classifier(object):
 
-    def __init__(self, cnn_weights=False, rnn_weights=False, 
-                wake = 0, s1 = 1, s2 = 2, sws = 3, rem = 4, verbose=1):
+    def __init__(self, wake = 0, s1 = 1, s2 = 2, sws = 3, rem = 4, verbose=1):
         """
-        :param directory: a directory string
+        Classifier interface for the sleepscorer
+        
+        :param cnn_weights: a directory string
         """
         self.predictions = None
         self.mapping = {0:wake, 1:s1, 2:s2, 3:sws, 4:rem}
