@@ -61,7 +61,7 @@ scorer = Scorer([file], hypnograms=True)
 scorer.run()
 ```
 
-##**Extended example**
+## **Extended example**
 
 First we download a sample file from the EDFx database
 
@@ -88,7 +88,7 @@ tools.show_sample_hypnogram('sample-psg.groundtruth.csv', start=960, stop=1800)
 ```
 The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch.
 
-##**Extended using numpy arrays**
+## **Extended using numpy arrays**
 If you want to handle the data loading yourself you can do so. Data needs to be sampled with 100 Hz. EEG and EOG are high-pass filtered with 0.15 Hz and the EMG has a high-pass filter of 10 Hz. Data needs to be in the format `[epochs, 3000, 3]` where the last dimension is EEG, EMG and EOG.
 
 ```Python
