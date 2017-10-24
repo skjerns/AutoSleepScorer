@@ -50,7 +50,7 @@ If you get an error that`git` is not installed, you can install it using the com
 
 Open a python console for instance using Anaconda.
 
-##**Minimal example**
+## **Minimal example**
 
 For quick classification
 

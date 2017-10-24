@@ -61,7 +61,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
+                tools.download('https://www.dropbox.com/s/1t29gzkz6ruooas/cnn.hdf5?dl=1', './weights/cnn.hdf5')
             
         if rnn:
             if ask and os.path.isfile(self.rnn):
@@ -71,7 +71,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('https://www.dropbox.com/s/bx5ulz7ps3pyjbk/rnn.hdf5?dl=1', './weights/rnn.hdf5')
+                tools.download('https://www.dropbox.com/s/nq6mks79sov6yzz/rnn.hdf5?dl=1', './weights/rnn.hdf5')
                 
         
             
