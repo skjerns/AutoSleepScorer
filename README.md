@@ -22,7 +22,7 @@ Data Set| Agreement | F1-score
 
 ## Usage
 
-The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used. All data will be resampled to 100 Hz.
+The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used, or any numpy data in the format [epochs, 3000, 3]. All data will be resampled to 100 Hz.
 
 Documentation and command line instructions are coming soon. For now please see [Quickstart](https://github.com/skjerns/AutoSleepScorer#quickstart).
 
@@ -46,11 +46,11 @@ Clone and install this repository via pip:
 
 If you get an error that`git` is not installed, you can install it using the command line `conda install git`
 
-## Quickstart
+# Quickstart
 
 Open a python console for instance using Anaconda.
 
-**Minimal example**
+##**Minimal example**
 
 For quick classification
 
@@ -61,7 +61,7 @@ scorer = Scorer([file], hypnograms=True)
 scorer.run()
 ```
 
-**Extended example**
+##**Extended example**
 
 First we download a sample file from the EDFx database
 
@@ -87,3 +87,19 @@ scorer.run()
 tools.show_sample_hypnogram('sample-psg.groundtruth.csv', start=960, stop=1800)
 ```
 The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch.
+
+##**Extended using numpy arrays**
+If you want to handle the data loading yourself you can do so. Data needs to be sampled with 100 Hz. EEG and EOG are high-pass filtered with 0.15 Hz and the EMG has a high-pass filter of 10 Hz. Data needs to be in the format `[epochs, 3000, 3]` where the last dimension is EEG, EMG and EOG.
+
+```Python
+from sleepscorer import Classifier
+data = ... # load your python array, preprocessed
+assert(data.ndim==3 and data.shape[1:]==(3000,3))
+
+clf = Classifier()
+clf.download_weights()  # skip this if you already downloaded them.
+clf.load_cnn_model('./weights/cnn.hdf5')
+clf.load_rnn_model('./weights/rnn.hdf5)
+preds = clf.predict(data, classes=True)
+```
+

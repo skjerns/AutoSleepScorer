@@ -212,6 +212,12 @@ class Classifier(object):
         return self.predictions
     
     
+    def download_weights(self):
+        try: os.mkdir('./weights')
+        except Exception: pass
+        tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
+        tools.download('https://www.dropbox.com/s/bx5ulz7ps3pyjbk/rnn.hdf5?dl=1', './weights/rnn.hdf5')
+    
     
     
     
