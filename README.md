@@ -2,7 +2,7 @@
 An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-This package is still under development and not published yet.
+**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. Please do not use this package in clinial or research setup until a validation is published.**
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
@@ -86,7 +86,7 @@ scorer.run()
 # this will only work if you have matplotlib set-up
 tools.show_sample_hypnogram('sample-psg.groundtruth.csv', start=960, stop=1800)
 ```
-The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch.
+The predictions will now be saved as `sample-psg.edf.csv`, where each row corresponds to one epoch (0=W, 1=S1, 2=S2, 3=SWS, 4=REM).
 
 ## **Extended using numpy arrays**
 If you want to handle the data loading yourself you can do so. Data needs to be sampled with 100 Hz. EEG and EOG are high-pass filtered with 0.15 Hz and the EMG has a high-pass filter of 10 Hz. Data needs to be in the format `[epochs, 3000, 3]` where the last dimension is EEG, EMG and EOG.
