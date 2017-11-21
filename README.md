@@ -2,7 +2,7 @@
 An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. Please do not use this package in clinial or research setup until a validation is published.**
+**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. Please do not use this package in clinical or research setup.**
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
