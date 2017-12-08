@@ -61,7 +61,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('https://www.dropbox.com/s/1t29gzkz6ruooas/cnn.hdf5?dl=1', './weights/cnn.hdf5')
+                tools.download('https://www.dropbox.com/s/otm6t0u2tmbj7sd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
             
         if rnn:
             if ask and os.path.isfile(self.rnn):
@@ -71,7 +71,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('https://www.dropbox.com/s/nq6mks79sov6yzz/rnn.hdf5?dl=1', './weights/rnn.hdf5')
+                tools.download('https://www.dropbox.com/s/t6n9x9pvt5tlvj8/rnn.hdf5?dl=1', './weights/rnn.hdf5')
                 
         
             
@@ -176,7 +176,6 @@ class Classifier(object):
             features, predictions = activations
             self.features = features
             self.cnn_preds = predictions
-            self.predict_rnn(features)
             return features, predictions
         else:
             self.cnn_preds = predictions
