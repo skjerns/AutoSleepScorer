@@ -1,16 +1,18 @@
 # AutoSleepScorer
-An attempt to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. This package aims at researchers trying to find an open-source solution for automatic sleep stage classification of human PSG recordings. 
+A pilot project to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. Please do not use this package in clinical or research setup.**
+**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. As of November 2017 development has ceased. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far.
+**
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
-In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network was trained and evaluated on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
+In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network architecture was trained and evaluated on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
 
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. Further results and details on the architecture are available in my [Thesis](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
 **Classifier performance (5-fold cross validation)**
+Scores obtained training and testing within one dataset.
 
 Data Set| Agreement | F1-score
 ------------ | -------------|-------------
@@ -25,6 +27,7 @@ Data Set| Agreement | F1-score
 The Classifier expects a PSG recording with at least one EEG, EMG and EOG present. Theoretically all data formats supported by [MNE](https://martinos.org/mne/stable/python_reference.html#reading-raw-data) can be used, or any numpy data in the format [epochs, 3000, 3]. All data will be resampled to 100 Hz.
 
 Documentation and command line instructions are coming soon. For now please see [Quickstart](https://github.com/skjerns/AutoSleepScorer#quickstart).
+
 
 ## Installation
 The AutoSleepScorer is currently running with Python 3 using Keras with Tensorflow and has been tested on Windows 10. Due to Pythons multi-platform support it should run other OS as well. The easiest way to get started is using Anaconda, a Python package manager.
