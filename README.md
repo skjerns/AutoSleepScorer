@@ -2,8 +2,7 @@
 A pilot project to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. As of November 2017 development has ceased. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far.
-**
+**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. As of November 2017 development has ceased. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far.**
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
@@ -12,6 +11,7 @@ In this project a Convolutional Neural Network with Long Short-Term Memory is us
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. Further results and details on the architecture are available in my [Thesis](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
 **Classifier performance (5-fold cross validation)**
+
 Scores obtained training and testing within one dataset.
 
 Data Set| Agreement | F1-score
