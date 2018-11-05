@@ -110,11 +110,11 @@ preds = clf.predict(data, classes=True)
 A short overview of useful sleep datasets
 
 Data Set Name| Study Name | Number of subjects | condition
-| Abbreviation                                                                                                                                 | Study Name                                     |   | Recordings | Condition            |
-|----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---|------------|----------------------|
-| [CCSHS](https://sleepdata.org/datasets/ccshs)                                                                                                | Cleveland Children's Sleep and Health Study    |   | 515        | health, young        |
-| [ISRUC-SLEEP](https://sleeptight.isr.uc.pt/ISRUC_Sleep/)                                                                                     | ISRUC-SLEEP Dataset                            |   | 126        | healthy + disordered |
-| [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/)                                                                                        | The Sleep-EDF Database                         |   | 61         | healthy              |
-| [UCDDB](https://physionet.org/pn3/ucddb/)                                                                                                    | University College Dublin Sleep Apnea Database |   | 25         | sleep apnoe          |
-|                                                                                                                                              |                                                |   |            |                      |
-| [more see here...](http://1uc15120fenp48is1xxuutiq-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/Publicallyavailablesleepdatasets.xlsx) |                                                |   |            |                      |
+| Abbreviation                                                                                                                                 | Study Name                                     | Recordings | Condition            |
+|----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|------------|----------------------|
+| [CCSHS](https://sleepdata.org/datasets/ccshs)                                                                                                | Cleveland Children's Sleep and Health Study    | 515        | health, young        |
+| [ISRUC-SLEEP](https://sleeptight.isr.uc.pt/ISRUC_Sleep/)                                                                                     | ISRUC-SLEEP Dataset                            | 126        | healthy + disordered |
+| [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/)                                                                                        | The Sleep-EDF Database                         | 61         | healthy              |
+| [UCDDB](https://physionet.org/pn3/ucddb/)                                                                                                    | University College Dublin Sleep Apnea Database | 25         | sleep apnoe          |
+|                                                                                                                                              |                                                |            |                      |
+| [more see here...](http://1uc15120fenp48is1xxuutiq-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/Publicallyavailablesleepdatasets.xlsx) |                                                |            |                      |
