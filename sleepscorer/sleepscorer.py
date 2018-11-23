@@ -214,8 +214,8 @@ class Classifier(object):
     def download_weights(self):
         try: os.mkdir('./weights')
         except Exception: pass
-        tools.download('https://www.dropbox.com/s/87jcp2zdqx833dd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
-        tools.download('https://www.dropbox.com/s/bx5ulz7ps3pyjbk/rnn.hdf5?dl=1', './weights/rnn.hdf5')
+        tools.download('https://www.dropbox.com/s/otm6t0u2tmbj7sd/cnn.hdf5?dl=1', './weights/cnn.hdf5')
+        tools.download('https://www.dropbox.com/s/t6n9x9pvt5tlvj8/rnn.hdf5?dl=1', './weights/rnn.hdf5')
     
     
     
