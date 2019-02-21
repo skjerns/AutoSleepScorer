@@ -71,7 +71,7 @@ First we download a sample file from the EDFx database
 ```Python
 from sleepscorer import tools
 # download sample EEG file from the EDFx database
-tools.download('https://physionet.nlm.nih.gov/pn4/sleep-edfx/SC4001E0-PSG.edf', 'sample-psg.edf')
+tools.download('https://physionet.org/physiobank/database/sleep-edfx/sleep-cassette/SC4001E0-PSG.edf', 'sample-psg.edf')
 # download corresponding hypnogram for comparrison of classification
 tools.download('https://pastebin.com/raw/jbzz16wP', 'sample-psg.groundtruth.csv') 
 ```
