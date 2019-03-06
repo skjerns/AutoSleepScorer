@@ -113,7 +113,7 @@ A short overview of useful sleep datasets
 |----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|------------|----------------------|
 | [CCSHS](https://sleepdata.org/datasets/ccshs)                                                                                                | Cleveland Children's Sleep and Health Study    | 515        | health, young        |
 | [ISRUC-SLEEP](https://sleeptight.isr.uc.pt/ISRUC_Sleep/)                                                                                     | ISRUC-SLEEP Dataset                            | 126        | healthy + disordered |
-| [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/)                                                                                        | The Sleep-EDF Database                         | 61         | healthy              |
+| [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/)                                                                                        | The Sleep-EDF Database                         | 153         | healthy              |
 | [UCDDB](https://physionet.org/pn3/ucddb/)                                                                                                    | University College Dublin Sleep Apnea Database | 25         | sleep apnoe          |
 | [DREAMS](http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseSubjects/) | The DREAMS Subjects Database | 20 | healthy |             
 | [SDRC](https://data.mendeley.com/datasets/3hx58k232n/4) | study on psychophysiological insomnia | 60 | healthy&insomnia patients |             
