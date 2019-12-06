@@ -117,4 +117,4 @@ A short overview of useful sleep datasets
 | [UCDDB](https://physionet.org/pn3/ucddb/)                                                                                                    | University College Dublin Sleep Apnea Database | 25         | sleep apnoe          |
 | [DREAMS](http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseSubjects/) | The DREAMS Subjects Database | 20 | healthy |             
 | [SDRC](https://data.mendeley.com/datasets/3hx58k232n/4) | study on psychophysiological insomnia | 60 | healthy&insomnia patients |             
-| [more see here...](http://1uc15120fenp48is1xxuutiq-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/Publicallyavailablesleepdatasets.xlsx) |                                                |            |                      
+| [more see here...](https://github.com/skjerns/AutoSleepScorer/blob/master/Publicallyavailablesleepdatasets.xlsx) |                                                |            |                      
