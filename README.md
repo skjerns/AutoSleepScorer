@@ -116,5 +116,5 @@ A short overview of useful sleep datasets
 | [EDFx](https://physionet.nlm.nih.gov/pn4/sleep-edfx/)                                                                                        | The Sleep-EDF Database                         | 153         | healthy              |
 | [UCDDB](https://physionet.org/pn3/ucddb/)                                                                                                    | University College Dublin Sleep Apnea Database | 25         | sleep apnoe          |
 | [DREAMS](http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseSubjects/) | The DREAMS Subjects Database | 20 | healthy |             
-| [SDRC](https://data.mendeley.com/datasets/3hx58k232n/4) | study on psychophysiological insomnia | 60 | healthy&insomnia patients |     | [MGH](https://data.mendeley.com/datasets/3hx58k232n/4) | sleep laboratory patients | 1985 | mixed |     
+| [SDRC](https://data.mendeley.com/datasets/3hx58k232n/4) | study on psychophysiological insomnia | 60 | healthy&insomnia patients |     | [MGH](https://physionet.org/content/challenge-2018/1.0.0/) | sleep laboratory patients | 1985 | mixed |
 | [more see here...](https://github.com/skjerns/AutoSleepScorer/blob/master/Publicallyavailablesleepdatasets.xlsx) |                                                |            |                      
