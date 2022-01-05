@@ -61,7 +61,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('http://cloud.skjerns.de/index.php/s/X3iTwBrRy5qzEtg/download/cnn.hdf5', './weights/cnn.hdf5')
+                tools.download('https://cloud.skjerns.de/index.php/s/cpiABBRFJNP6HSg/download/cnn.hdf5', './weights/cnn.hdf5')
             
         if rnn:
             if ask and os.path.isfile(self.rnn):
@@ -71,7 +71,7 @@ class Scorer(object):
             if r.upper() == 'Y':
                 try: os.mkdir('./weights')
                 except Exception: pass
-                tools.download('http://cloud.skjerns.de/index.php/s/EfeXQeJ2Yy46fA9/download/rnn.hdf5', './weights/rnn.hdf5')
+                tools.download('https://cloud.skjerns.de/index.php/s/6PqKKb9riyDeqg6/download/rnn.hdf5', './weights/rnn.hdf5')
                 
         
             
