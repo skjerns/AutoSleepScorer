@@ -2,7 +2,20 @@
 A pilot project to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-**This package is a pilot project and still under development. There is no clinical validation and no support. The package is experimental at least. As of November 2017 development has ceased. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far.**
+**This package was a pilot project and is no longer being developed (as of 2017). There is no clinical validation and no support. **
+
+The package is experimental at least. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far, and probably will never have.
+
+### Other good projects
+
+As the project continues to get attention, I encourage you to take a look at newer project instead of my project, especially
+
+* [U-Sleep](https://github.com/perslev/U-Sleep) and [U-Time](https://github.com/perslev/U-Time)
+   * it performs amazingly well, much much better than anything I've seen before! Seal of approval from my side :)
+* [YASA](https://github.com/raphaelvallat/yasa) not quite as good as U-Sleep, but open source and with accessible models.
+* [TinySleepNet](https://github.com/akaraspt/tinysleepnet) much better theoretical ground work than AutoSleepScorer, and using newer paradigms
+
+
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
 ## Introduction
