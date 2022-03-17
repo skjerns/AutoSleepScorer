@@ -2,7 +2,7 @@
 A pilot project to create a robust sleep scorer using Convolutional Neural Networks with Long Short-Term Memory. 
 It is a follow-up of my Master's Thesis: [Automatic Sleep Stage Classification using Convolutional Neural Networks with Long Short-Term Memory](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
 
-**This package was a pilot project and is no longer being developed (as of 2017). There is no clinical validation and no support. **
+** This package was a pilot project and is no longer being developed (as of 2017). There is no clinical validation and no support. **
 
 The package is experimental at least. Please do not use this package in clinical or research setup. The pretrained weights supplied at the moment are random snapshots of one of the trainings of the CCSHS50 dataset and are only for demonstrational purposes. The final goal is to have weights trained on different datasets, but I have not had time so far, and probably will never have.
 
