@@ -15,10 +15,10 @@ As the project continues to get attention, I encourage you to take a look at new
 * [YASA](https://github.com/raphaelvallat/yasa) not quite as good as U-Sleep, but open source and with accessible models.
 * [TinySleepNet](https://github.com/akaraspt/tinysleepnet) much better theoretical ground work than AutoSleepScorer, and using newer paradigms
 
-
+## Introduction
 
 ![Sample Hypnogram](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/hypno.png?raw=true)
-## Introduction
+
 In this project a Convolutional Neural Network with Long Short-Term Memory is used for the detection of sleep stages. This approach has the advantage that it can automatically detect and extract features from the raw EEG, EMG and EOG signal (see [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/features.png?raw=true) for example features that are learned by the network). The network architecture was trained and evaluated on several different public and private datasets to ensure a good generalizability (CCSHS, EDFx, EMSA). The network architecture can be found [here](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/architecture.png?raw=true).
 
 Currently the classifier reaches the state-of-the-art of automatic sleep stage classification while obtaining a similar performance to a human scorer. Further results and details on the architecture are available in my [Thesis](https://github.com/skjerns/AutoSleepScorer/blob/master/figures/thesis.pdf?raw=true)
