@@ -12,8 +12,11 @@ As the project continues to get attention, I encourage you to take a look at new
 
 * [U-Sleep](https://github.com/perslev/U-Sleep) and [U-Time](https://github.com/perslev/U-Time)
    * it performs amazingly well, much much better than anything I've seen before! Seal of approval from my side :)
+   * check out [sleepyland](https://github.com/biomedical-signal-processing/SLEEPYLAND) for some readily trained models
 * [YASA](https://github.com/raphaelvallat/yasa) not quite as good as U-Sleep, but open source and with accessible models.
 * [TinySleepNet](https://github.com/akaraspt/tinysleepnet) much better theoretical ground work than AutoSleepScorer, and using newer paradigms
+
+
 
 ## Introduction
 
